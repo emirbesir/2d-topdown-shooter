@@ -1,32 +1,32 @@
 using UnityEngine;
 
-public class PlayerInputHandler : MonoBehaviour
+public class PlayerInputHandler : MonoBehaviour, IPlayerInput
 {
-    private GameInput gameInput;
-    private Vector2 moveInput;
+    private GameInput _gameInput;
+    private Vector2 _moveInput;
 
     private void Awake()
     {
-        gameInput = new GameInput();
+        _gameInput = new GameInput();
     }
 
     private void OnEnable()
     {
-        gameInput.Enable();
+        _gameInput.Enable();
     }
 
     private void OnDisable()
     {
-        gameInput.Disable();
+        _gameInput.Disable();
     }
 
     private void Update()
     {
-        moveInput = gameInput.Player.Move.ReadValue<Vector2>();
+        _moveInput = _gameInput.Player.Move.ReadValue<Vector2>();
     }
 
-    public Vector2 GetMoveInputNormalized()
+    public Vector2 GetMoveInput()
     {
-        return moveInput.normalized;
+        return _moveInput;
     }
 }

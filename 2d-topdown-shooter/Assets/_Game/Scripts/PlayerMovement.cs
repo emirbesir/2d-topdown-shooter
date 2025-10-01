@@ -1,22 +1,27 @@
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Reference")]
-    [SerializeField] private PlayerInputHandler playerInput;
-    [Header("Config")]
-    [SerializeField] private float moveSpeed;
+    private Rigidbody2D _rb;
+    private IPlayerInput _playerInput;
+    private MovementConfig _movementConfig;
 
-    private Rigidbody2D rb;
+    [Inject]
+    public void Construct(IPlayerInput playerInput, MovementConfig movementConfig)
+    {
+        _playerInput = playerInput;
+        _movementConfig = movementConfig;
+    }
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = playerInput.GetMoveInputNormalized() * moveSpeed;
+        _rb.linearVelocity = _playerInput.GetMoveInput().normalized * _movementConfig.MoveSpeed;
     }
 }
