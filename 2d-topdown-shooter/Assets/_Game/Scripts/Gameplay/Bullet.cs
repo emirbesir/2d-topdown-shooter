@@ -27,6 +27,8 @@ public class Bullet : MonoBehaviour
         _direction = direction;
         transform.position = startingPosition;
         _bulletPool = pool;
+        _isInitialized = true;
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
     }
 
     private void OnEnable()

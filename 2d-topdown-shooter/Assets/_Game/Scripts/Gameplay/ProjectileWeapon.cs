@@ -34,6 +34,12 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
         _lastShootTime = -_weaponConfig.RateOfFire;
     }
 
+    public void ChangeWeapon(WeaponConfig newConfig)
+    {
+        _weaponConfig = newConfig;
+        InitializeWeapon();
+    }
+
     public void Reload()
     {
         if (_isReloading || _totalBullet <= 0 || _currentBulletInMag == _weaponConfig.BulletInMag) return;
