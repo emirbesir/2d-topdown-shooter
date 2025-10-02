@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     private float _speed;
     private Vector2 _direction;
     private Coroutine _deactivateCoroutine;
+    private bool _isInitialized;
 
     private void Awake()
     {
@@ -35,6 +36,8 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!_isInitialized) return;
+        
         _rb.linearVelocity = _direction * _speed;
     }
 
