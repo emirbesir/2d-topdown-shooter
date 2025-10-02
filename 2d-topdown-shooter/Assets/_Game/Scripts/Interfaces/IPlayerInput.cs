@@ -3,8 +3,7 @@ using UnityEngine;
 
 public interface IPlayerInput
 {
-    Vector2 GetMoveInput();
+    Vector2 MoveInput { get; }
     Vector2 GetMouseWorldPosition();
-
     event Action OnAttack;
 }

@@ -13,6 +13,7 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
     private int _currentBulletInMag;
     private int _totalBullet;
     private float _lastShootTime;
+    private bool _isReloading;
 
     [Inject]
     public void Constructor(IPool<Bullet> bulletPool)
@@ -35,16 +36,18 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
 
     public void Reload()
     {
-        if (_totalBullet <= 0) return;
+        if (_isReloading || _totalBullet <= 0 || _currentBulletInMag == _weaponConfig.BulletInMag) return;
         StartCoroutine(ReloadCoroutine());
     }
 
     private IEnumerator ReloadCoroutine()
     {
+        _isReloading = true;
         yield return new WaitForSeconds(_weaponConfig.ReloadTime);
+
         int bulletsToReload = _weaponConfig.BulletInMag - _currentBulletInMag;
 
-        if (_totalBullet - bulletsToReload >= 0)
+        if (_totalBullet >= bulletsToReload)
         {
             _currentBulletInMag += bulletsToReload;
             _totalBullet -= bulletsToReload;
@@ -54,16 +57,20 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
             _currentBulletInMag += _totalBullet;
             _totalBullet = 0;
         }
+        
+        _isReloading = false;
     }
 
     public void Shoot(Vector2 targetPosition)
     {
-        if (_totalBullet <= 0) return;
+        if (_isReloading) return;
+
         if (_currentBulletInMag <= 0)
         {
             Reload();
             return;
         }
+
         if (Time.time - _lastShootTime < 1f / _weaponConfig.RateOfFire) return;
 
         Bullet bullet = _bulletPool.GetObject();

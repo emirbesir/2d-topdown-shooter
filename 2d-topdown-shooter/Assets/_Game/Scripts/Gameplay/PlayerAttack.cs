@@ -25,6 +25,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void HandleAttack()
     {
+        if (_currentWeapon == null || _playerInput == null)
+        {
+            Debug.LogError("CurrentWeapon or PlayerInput is not assigned.");
+            return;
+        }
         _currentWeapon.Shoot(_playerInput.GetMouseWorldPosition());
     }
 }

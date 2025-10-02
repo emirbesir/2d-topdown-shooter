@@ -29,8 +29,7 @@ public abstract class ObjectPoolBase : MonoBehaviour
             obj.SetActive(true);
             return obj;
         }
-
-        Debug.Log("Pool is fully used! Instantiating new object");
+        
         return Instantiate(_prefab);
     }
 

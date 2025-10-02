@@ -4,7 +4,7 @@ using Zenject;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
-{   
+{
     private const float TIME_TO_DEACTIVATE = 3f;
 
     private IPool<Bullet> _bulletPool;
@@ -12,38 +12,11 @@ public class Bullet : MonoBehaviour
     private float _damage;
     private float _speed;
     private Vector2 _direction;
+    private Coroutine _deactivateCoroutine;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnEnable()
-    {
-        StartCoroutine(DeactivateAfterTime(TIME_TO_DEACTIVATE));
-    }
-
-    private void FixedUpdate()
-    {
-        _rb.linearVelocity = _direction * _speed;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        IDamageable damageable;
-
-        if (collision.TryGetComponent<IDamageable>(out damageable))
-        {
-            damageable.TakeDamage(_damage);
-            print($"{collision.gameObject.name} has been hit with {_damage} damage!");
-            _bulletPool.ReturnObject(this);
-        }
-    }
-
-    private IEnumerator DeactivateAfterTime(float time)
-    {
-        yield return new WaitForSeconds(time);
-        _bulletPool.ReturnObject(this);
     }
 
     public void InitializeBullet(float damage, float speed, Vector2 direction, Vector2 startingPosition, IPool<Bullet> pool)
@@ -53,5 +26,41 @@ public class Bullet : MonoBehaviour
         _direction = direction;
         transform.position = startingPosition;
         _bulletPool = pool;
+    }
+
+    private void OnEnable()
+    {
+        _deactivateCoroutine = StartCoroutine(DeactivateAfterTime(TIME_TO_DEACTIVATE));
+    }
+
+    private void FixedUpdate()
+    {
+        _rb.linearVelocity = _direction * _speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<IDamageable>(out var damageable))
+        {
+            damageable.TakeDamage(_damage);
+            ReturnToPool();
+        }
+    }
+
+    private IEnumerator DeactivateAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        ReturnToPool();
+    }
+
+    private void ReturnToPool()
+    {
+        if (_deactivateCoroutine != null)
+        {
+            StopCoroutine(_deactivateCoroutine);
+            _deactivateCoroutine = null;
+        }
+        _rb.linearVelocity = Vector2.zero;
+        _bulletPool.ReturnObject(this);
     }
 }
