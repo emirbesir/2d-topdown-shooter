@@ -4,5 +4,6 @@ using UnityEngine;
 public class MovementConfig : ScriptableObject
 {
     [SerializeField, Range(0f, 20f)] private float moveSpeed = 5f;
+    
     public float MoveSpeed => moveSpeed;
 }
