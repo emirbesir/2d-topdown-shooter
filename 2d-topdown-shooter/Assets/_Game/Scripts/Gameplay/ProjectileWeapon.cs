@@ -9,11 +9,23 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
     [Header("References")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
+    private IPool<Bullet> _bulletPool;
     private int _currentBulletInMag;
     private int _totalBullet;
     private float _lastShootTime;
 
+    [Inject]
+    public void Constructor(IPool<Bullet> bulletPool)
+    {
+        _bulletPool = bulletPool;
+    }
+
     private void Start()
+    {
+        InitializeWeapon();
+    }
+
+    public void InitializeWeapon()
     {
         _currentBulletInMag = _weaponConfig.BulletInMag;
         _totalBullet = _weaponConfig.TotalBullets;
@@ -54,12 +66,12 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
         }
         if (Time.time - _lastShootTime < 1f / _weaponConfig.RateOfFire) return;
 
-        GameObject bullet = Instantiate(_weaponConfig.ProjectilePrefab, transform.position, Quaternion.identity);
+        Bullet bullet = _bulletPool.GetObject();
         _lastShootTime = Time.time;
         _currentBulletInMag--;
 
         Vector2 weaponPosition = transform.position;
         Vector2 shootDirectionNormalized = (targetPosition - weaponPosition).normalized;
-        bullet.GetComponent<Bullet>().InitializeBullet(_weaponConfig.Damage, _weaponConfig.BulletSpeed, shootDirectionNormalized);
+        bullet.InitializeBullet(_weaponConfig.Damage, _weaponConfig.BulletSpeed, shootDirectionNormalized, weaponPosition, _bulletPool);
     }
 }

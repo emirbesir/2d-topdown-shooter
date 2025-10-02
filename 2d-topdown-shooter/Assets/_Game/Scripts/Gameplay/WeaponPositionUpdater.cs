@@ -3,7 +3,7 @@ using Zenject;
 
 public class WeaponPositionUpdater : MonoBehaviour
 {
-    private const float WEAPON_POSITION_OFFSET = 0.5f;
+    private const float WEAPON_POSITION_OFFSET = 1f;
     
     private IPlayerInput _playerInput;
 
@@ -24,7 +24,7 @@ public class WeaponPositionUpdater : MonoBehaviour
         Vector2 aimDirectionNormalized = (mousePosition - (Vector2)transform.parent.position).normalized;
         transform.localPosition = aimDirectionNormalized * WEAPON_POSITION_OFFSET;
 
-        float angle = Mathf.Atan2(aimDirectionNormalized.y, aimDirectionNormalized.x) * Mathf.Rad2Deg - 90;
+        float angle = Mathf.Atan2(aimDirectionNormalized.y, aimDirectionNormalized.x) * Mathf.Rad2Deg;
         transform.localRotation = Quaternion.Euler(0, 0, angle);
     }
 }

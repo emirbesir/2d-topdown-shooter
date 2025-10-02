@@ -271,13 +271,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol
       objectReference: {fileID: 0}
+    - target: {fileID: 2850661277211428434, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850661277211428434, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850661277211428434, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850661277211428434, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6552070246664141717, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6552070246664141717, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6552070246664141717, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
       propertyPath: m_LocalPosition.z
@@ -285,7 +301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6552070246664141717, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 6552070246664141717, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
       propertyPath: m_LocalRotation.x
@@ -297,7 +313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6552070246664141717, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 6552070246664141717, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -309,8 +325,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6552070246664141717, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 7650964007313638296, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650964007313638296, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
+      propertyPath: m_Size.y
+      value: 0.21875
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650964007313638296, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4854829337826818713, guid: 86f60fd98dd75a9478634a46616822d3, type: 3}
+    - target: {fileID: 7650964007313638296, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650964007313638296, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612638565134489777, guid: 6ff3e32bbe04649449c7431f78448059, type: 3}
+      propertyPath: _weaponConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 0398d3c94e739934eaffe21788306bab, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

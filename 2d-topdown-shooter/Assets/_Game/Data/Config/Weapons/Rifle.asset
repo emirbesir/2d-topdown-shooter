@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77ec0b2749c4744f93de9a98d736435, type: 3}
   m_Name: Rifle
   m_EditorClassIdentifier: Assembly-CSharp::WeaponConfig
-  sprite: {fileID: 0}
+  sprite: {fileID: 8333481726314500824, guid: 8691f4abac4a4bc4ebe07de0fc48b9cb, type: 3}
   damage: 25
-  rateOfFire: 0.05
-  bulletSpeed: 40
+  rateOfFire: 10
+  bulletSpeed: 60
   bulletInMag: 30
   additionalMagCount: 3
   reloadTime: 2
