@@ -12,6 +12,7 @@ public class WeaponConfig : ScriptableObject
     [SerializeField] private int bulletInMag = 19;
     [SerializeField] private int additionalMagCount = 3;
     [SerializeField] private float reloadTime = 1f;
+    [SerializeField] private bool isAutomatic = false;
     [Header("Projectile")]
     [SerializeField] private GameObject projectilePrefab;
 
@@ -23,4 +24,5 @@ public class WeaponConfig : ScriptableObject
     public int TotalBullets => bulletInMag + bulletInMag * additionalMagCount;
     public float ReloadTime => reloadTime;
     public GameObject ProjectilePrefab => projectilePrefab;
+    public bool IsAutomatic => isAutomatic;
 }

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c77ec0b2749c4744f93de9a98d736435, type: 3}
-  m_Name: Pistol
+  m_Name: Submachine Gun
   m_EditorClassIdentifier: Assembly-CSharp::WeaponConfig
-  sprite: {fileID: -4854829337826818713, guid: 86f60fd98dd75a9478634a46616822d3, type: 3}
-  damage: 25
-  rateOfFire: 4.5
-  bulletSpeed: 20
-  bulletInMag: 12
-  additionalMagCount: 3
-  reloadTime: 1.6
-  isAutomatic: 0
+  sprite: {fileID: 6446061410222754207, guid: 3ac2eaf0d096bb24ab097fba25b46a24, type: 3}
+  damage: 20
+  rateOfFire: 15
+  bulletSpeed: 21
+  bulletInMag: 40
+  additionalMagCount: 4
+  reloadTime: 2.1
+  isAutomatic: 1
   projectilePrefab: {fileID: 4384024332407555804, guid: a5651a95e1a12794689f374fd48e7d07, type: 3}

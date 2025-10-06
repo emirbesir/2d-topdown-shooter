@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Rifle
   m_EditorClassIdentifier: Assembly-CSharp::WeaponConfig
   sprite: {fileID: 8333481726314500824, guid: 8691f4abac4a4bc4ebe07de0fc48b9cb, type: 3}
-  damage: 25
-  rateOfFire: 10
-  bulletSpeed: 60
+  damage: 34
+  rateOfFire: 10.8
+  bulletSpeed: 35
   bulletInMag: 30
   additionalMagCount: 3
-  reloadTime: 2
+  reloadTime: 2.6
+  isAutomatic: 1
   projectilePrefab: {fileID: 4384024332407555804, guid: a5651a95e1a12794689f374fd48e7d07, type: 3}

@@ -29,6 +29,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Vector2 moveInput = _playerInput.MoveInput;
-        _rb.linearVelocity = moveInput.normalized * _movementConfig.MoveSpeed;
+
+        MoveTowards(moveInput);
+    }
+
+    private void MoveTowards(Vector2 direction)
+    {
+        _rb.linearVelocity = direction.normalized * _movementConfig.MoveSpeed;
     }
 }

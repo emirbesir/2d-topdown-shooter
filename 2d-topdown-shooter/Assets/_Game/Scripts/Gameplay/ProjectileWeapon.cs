@@ -87,4 +87,9 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
         Vector2 shootDirectionNormalized = (targetPosition - weaponPosition).normalized;
         bullet.InitializeBullet(_weaponConfig.Damage, _weaponConfig.BulletSpeed, shootDirectionNormalized, weaponPosition, _bulletPool);
     }
+
+    public bool IsAutomatic()
+    {
+        return _weaponConfig.IsAutomatic;
+    }
 }

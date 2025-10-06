@@ -4,4 +4,5 @@ public interface IWeapon
 {
     void Shoot(Vector2 targetPosition);
     void Reload();
+    bool IsAutomatic();
 }

@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 321195689e67a6042b4fb7aca59a5eaf, type: 3}
-  m_Name: PlayerMovementInstaller
-  m_EditorClassIdentifier: Assembly-CSharp::MovementInstaller
-  _playerMovementConfig: {fileID: 11400000, guid: 3a75b2a2524b5e24d8454f9ca4c5b326, type: 2}
+  m_Script: {fileID: 11500000, guid: 18f25bee9b3f3f54fa28c4e501b53ce3, type: 3}
+  m_Name: EnemySpawnerConfig
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnerConfig
+  _spawnInterval: 3
+  _spawnRadius: 30

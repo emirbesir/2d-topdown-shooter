@@ -10,6 +10,8 @@ public class PlayerInputHandler : MonoBehaviour, IPlayerInput
     private Vector2 _moveInput;
 
     public event Action OnAttack;
+    public event Action OnAttackRelease;
+
     public Vector2 MoveInput => _moveInput;
 
     private void Awake()
@@ -32,12 +34,14 @@ public class PlayerInputHandler : MonoBehaviour, IPlayerInput
     {
         _gameInput.Enable();
         _gameInput.Player.Attack.performed += HandleAttack;
+        _gameInput.Player.Attack.canceled += ReleaseAttack;
     }
 
     private void OnDisable()
     {
         _gameInput.Disable();
         _gameInput.Player.Attack.performed -= HandleAttack;
+        _gameInput.Player.Attack.canceled -= ReleaseAttack;
     }
 
     private void Update()
@@ -48,6 +52,11 @@ public class PlayerInputHandler : MonoBehaviour, IPlayerInput
     private void HandleAttack(InputAction.CallbackContext context)
     {
         OnAttack?.Invoke();
+    }
+
+    private void ReleaseAttack(InputAction.CallbackContext context)
+    {
+        OnAttackRelease?.Invoke();
     }
 
     public Vector2 GetMouseWorldPosition()

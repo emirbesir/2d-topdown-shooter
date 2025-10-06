@@ -5,9 +5,11 @@ public abstract class ObjectPoolBase : MonoBehaviour
 {   
     [Header("Object Pool Settings")]
     [SerializeField] private GameObject _prefab;
-    [SerializeField] private int _poolSize = 10;
+    [SerializeField] private int _poolSize;
 
     private Queue<GameObject> _pool;
+    
+    public int PoolSize => _poolSize;
 
     protected virtual void Awake()
     {
